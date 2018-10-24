@@ -1,0 +1,26 @@
+{
+  "name": "Youtube to Google Play Music",
+  "version": "1.0",
+  "description": "By using this extension youtube to google play music can be uploaded",
+  "manifest_version": 2,
+  "permissions": ["storage", "declarativeContent"],
+  "background": {
+    "scripts": ["js/background.js"],
+    "persistent": false
+  },
+  "page_action": {
+    "default_popup": "index.html",
+    "default_icon": {
+        "16": "icons/icons8-youtube-16.png",
+        "32": "icons/icons8-youtube-32.png",
+        "48": "icons/icons8-youtube-48.png",
+        "128": "icons/icons8-youtube-128.png"
+      }
+  },
+  "icons": {
+    "16": "icons/icons8-youtube-16.png",
+    "32": "icons/icons8-youtube-32.png",
+    "48": "icons/icons8-youtube-48.png",
+    "128": "icons/icons8-youtube-128.png"
+  }
+}
