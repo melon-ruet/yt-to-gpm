@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin, BaseUserManager
 from django.core import validators
 from django.core.mail import send_mail
-from django.db import models
+from django.db import models, OperationalError
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
@@ -35,10 +35,13 @@ class UserManager(BaseUserManager):
 
 
 def _token():
-    while True:
-        token = uuid.uuid4().hex[:15].upper()
-        if not User.objects.filter(token=token).exists():
-            return token
+    try:
+        while True:
+            token = uuid.uuid4().hex[:15].upper()
+            if not User.objects.filter(token=token).exists():
+                return token
+    except OperationalError:
+        return None
 
 
 class User(AbstractBaseUser, PermissionsMixin):
