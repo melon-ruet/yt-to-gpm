@@ -1,33 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+
 </head>
 <body>
-<div class="container-login100">
-    <div class="wrap-login100">
-        <form class="login100-form validate-form">
-					<span class="login100-form-title p-b-26">
-						Welcome
-					</span>
+    <form id="login_form" method="post">
+        <label for="username">Username</label>
+        <input type="text" id="username">
+        <label for="password">Password</label>
+        <input id="password" type="password">
 
-            <div class="wrap-input100 validate-input">
-                <input class="input100" type="text" name="secret">
-                <span class="focus-input100" data-placeholder="Enter Secret"></span>
-            </div>
-
-            <div class="container-login100-form-btn">
-                <div class="wrap-login100-form-btn">
-                    <div class="login100-form-bgbtn"></div>
-                    <button id="btn-login" class="login100-form-btn">
-                        Login
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-<script src="js/main.js"></script>
+        <input id="btn_login" type="submit" value="Login">
+    </form>
+    <script src="js/js.cookie.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/ajax.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
