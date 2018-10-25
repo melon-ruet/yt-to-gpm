@@ -26,9 +26,7 @@ SECRET_KEY = 'kom_64$_&tfbgk$&f9y%8do8pn)3qk+!z42lt-+tcfs&7qs!oh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['127.0.0.1']
 AUTH_USER_MODEL = 'converter.User'
 
 # Application definition
@@ -106,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Dhaka'
 
 USE_I18N = True
 
