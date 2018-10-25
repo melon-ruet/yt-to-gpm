@@ -4,6 +4,8 @@ import oauth2client.file
 import youtube_dl
 from django.contrib.auth import get_user_model
 from django.http import JsonResponse
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import View
 from gmusicapi import Musicmanager
 from oauth2client.client import OAuth2WebServerFlow
@@ -16,7 +18,14 @@ def _check_token(request):
     return get_user_model().objects.filter(token=token).exists()
 
 
-class TokenView(View):
+class BaseView(View):
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+
+class TokenView(BaseView):
 
     def get(self, request, *args, **kwargs):
         return JsonResponse({'response': _check_token(request)})
@@ -28,7 +37,7 @@ class TokenView(View):
         return JsonResponse({'response': False})
 
 
-class OAuthView(View):
+class OAuthView(BaseView):
 
     def get(self, request, *args, **kwargs):
         if _check_token(request):
@@ -51,7 +60,7 @@ class OAuthView(View):
         return JsonResponse({'response': False})
 
 
-class UploadView(View):
+class UploadView(BaseView):
     filename = None
 
     def _my_hook(self, d):

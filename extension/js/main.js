@@ -1,16 +1,14 @@
 let loginForm = document.getElementById('login_form');
 let loginButton = document.getElementById('btn_login');
+let username = document.getElementById('username');
+let password = document.getElementById('password');
 let baseUrl = 'http://127.0.0.1:8000';
 
 loginButton.addEventListener("click", function () {
-    let username = document.getElementById('username');
-    let password = document.getElementById('password');
-
-    $.ajax({
+    $.Ajax({
         method: 'post',
         url: baseUrl + '/token/',
-        dataType: 'json',
-        data: {'username': username.val(), 'password': password.val()},
+        data: {'username': username.value, 'password': password.value},
         success: function (data) {
 
         },
