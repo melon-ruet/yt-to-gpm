@@ -8,7 +8,7 @@ from django.views.generic.base import View
 from gmusicapi import Musicmanager
 from oauth2client.client import OAuth2WebServerFlow
 
-from ytmp3.settings import oauth
+from yt2gpm.settings import oauth
 
 
 def _check_token(request):

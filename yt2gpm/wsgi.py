@@ -1,5 +1,5 @@
 """
-WSGI config for ytmp3 project.
+WSGI config for yt2gpm project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ytmp3.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'yt2gpm.settings')
 
 application = get_wsgi_application()
