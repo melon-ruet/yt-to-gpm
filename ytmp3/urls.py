@@ -17,9 +17,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 
+from converter.views import TokenView, OAuthView
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
+    path('token/', TokenView.as_view()),
+    path('oauth/', OAuthView.as_view()),
 ]
 
 if settings.DEBUG:

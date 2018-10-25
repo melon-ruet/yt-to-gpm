@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from collections import namedtuple
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -121,3 +123,12 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# OAuth for google play music
+OAuthInfo = namedtuple('OAuthInfo', 'client_id client_secret scope redirect_uri')
+oauth = OAuthInfo(
+    '652850857958.apps.googleusercontent.com',
+    'ji1rklciNp2bfsFJnEH_i6al',
+    'https://www.googleapis.com/auth/musicmanager',
+    'urn:ietf:wg:oauth:2.0:oob'
+)

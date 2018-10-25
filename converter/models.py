@@ -1,3 +1,5 @@
+import uuid
+
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin, BaseUserManager
 from django.core import validators
@@ -32,6 +34,13 @@ class UserManager(BaseUserManager):
         return self._create_user(username, password, True, True, **extra_fields)
 
 
+def _token():
+    while True:
+        token = uuid.uuid4().hex[:15].upper()
+        if not User.objects.filter(token=token).exists():
+            return token
+
+
 class User(AbstractBaseUser, PermissionsMixin):
     """
     An abstract base class implementing a fully featured User model with
@@ -40,12 +49,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     Username, password and email are required. Other fields are optional.
     """
     username = models.EmailField(_('email'), max_length=50, unique=True,
-                                validators=[
+                                 validators=[
                                     validators.EmailValidator(_('Enter a valid email'), 'invalid'),
-                                ],
-                                error_messages={
+                                 ],
+                                 error_messages={
                                     'unique': _("A user with that email already exists"),
-                                })
+                                 })
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=30, blank=True)
     is_staff = models.BooleanField(_('staff status'), default=False,
@@ -53,9 +62,9 @@ class User(AbstractBaseUser, PermissionsMixin):
                                                'site.'))
     is_active = models.BooleanField(_('active'), default=True,
                                     help_text=_('Designates whether this user should be treated as '
-                                                'active. Unselect this instead of deleting accounts.'))
+                                                'active. Un select this instead of deleting accounts.'))
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
-    user_token = models.CharField(_('auth token'), max_length=100, unique=True)
+    token = models.CharField(_('auth token'), max_length=100, unique=True, default=_token)
     cred = models.FileField(_('credentials'), upload_to='cred/', null=True, blank=True)
 
     objects = UserManager()
