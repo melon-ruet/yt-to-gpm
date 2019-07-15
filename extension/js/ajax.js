@@ -30,7 +30,7 @@ jQuery.Ajax = function (options) {
             o.success(data);
         },
         error: function (data) {
-          o.error(data);
+            o.error(data);
         },
         beforeSend: function (xhr, settings) {
             if (!safeMethod(settings.type) && !this.crossDomain) {

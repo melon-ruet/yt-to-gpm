@@ -3,17 +3,24 @@
 <head>
 
 </head>
+
 <body>
-    <form id="login_form" method="post">
+    <span id="login-block">
         <label for="username">Username</label>
         <input type="text" id="username">
         <label for="password">Password</label>
         <input id="password" type="password">
+    </span>
 
-        <input id="btn_login" type="submit" value="Login">
-    </form>
+    <span id="code-block" style="display: none;">
+        <label for="code">Code</label>
+        <input id="code" type="text">
+    </span>
+
+    <input id="btn_login" type="submit" value="Submit">
+
     <script src="js/js.cookie.js"></script>
-    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/ajax.js"></script>
     <script src="js/main.js"></script>
 </body>

@@ -53,7 +53,7 @@ class OAuthView(BaseView):
             credentials = flow.step2_exchange(code)
 
             cred = get_user_model().objects.get(token=request.POST['token']).cred
-            storage = oauth2client.file.Storage('')
+            storage = oauth2client.file.Storage('oauth.cred')
             storage.put(credentials)
 
             return credentials
@@ -65,7 +65,7 @@ class UploadView(BaseView):
 
     def _my_hook(self, d):
         if d['status'] == 'finished':
-            self.filename= d['filename'].split('.')[0] + '.mp3'
+            self.filename = d['filename'].split('.')[0] + '.mp3'
 
     def post(self, request, *args, **kwargs):
         ydl_opts = {

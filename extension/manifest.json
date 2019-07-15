@@ -3,7 +3,7 @@
   "version": "1.0",
   "description": "By using this extension youtube to google play music can be uploaded",
   "manifest_version": 2,
-  "permissions": ["storage", "declarativeContent"],
+  "permissions": ["storage", "declarativeContent", "https://www.youtube.com/", "http://127.0.0.1:8001/token/"],
   "background": {
     "scripts": ["js/background.js"],
     "persistent": false
